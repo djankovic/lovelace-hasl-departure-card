@@ -547,10 +547,10 @@ var $24c52f343453d62d$export$2e2bcd8739ae039 = {
 });
 
 parcelRegister("j0ZcV", function(module, exports) {
-$parcel$export(module.exports, "nothing", () => (parcelRequire("l56HR")).nothing);
+$parcel$export(module.exports, "css", () => (parcelRequire("j8KxL")).css);
 $parcel$export(module.exports, "html", () => (parcelRequire("l56HR")).html);
 $parcel$export(module.exports, "LitElement", () => (parcelRequire("eGUNk")).LitElement);
-$parcel$export(module.exports, "css", () => (parcelRequire("j8KxL")).css);
+$parcel$export(module.exports, "nothing", () => (parcelRequire("l56HR")).nothing);
 parcelRequire("2emM7");
 parcelRequire("l56HR");
 parcelRequire("eGUNk");
@@ -1138,10 +1138,10 @@ const $f58f44579a4747ac$export$b3890eb0ae9dca99 = (t, i, s)=>{
 parcelRegister("eGUNk", function(module, exports) {
 $parcel$export(module.exports, "css", () => (parcelRequire("j8KxL")).css);
 $parcel$export(module.exports, "ReactiveElement", () => (parcelRequire("2emM7")).ReactiveElement);
-$parcel$export(module.exports, "nothing", () => (parcelRequire("l56HR")).nothing);
 $parcel$export(module.exports, "html", () => (parcelRequire("l56HR")).html);
-$parcel$export(module.exports, "render", () => (parcelRequire("l56HR")).render);
 $parcel$export(module.exports, "noChange", () => (parcelRequire("l56HR")).noChange);
+$parcel$export(module.exports, "nothing", () => (parcelRequire("l56HR")).nothing);
+$parcel$export(module.exports, "render", () => (parcelRequire("l56HR")).render);
 
 $parcel$export(module.exports, "LitElement", () => $ab210b2da7b39b9d$export$3f2f9f5909897157);
 
@@ -1473,6 +1473,7 @@ const $8ae640dd6c4226ad$var$defaultTranslation = {
     editor_show_departed_offeset: "... but show departed number of minutes ago",
     editor_show_time_always: "Always show departure time in HH:MM form",
     editor_hide_line_number: "Hide line number",
+    editor_use_sensor_color: "Use sensor color",
     editor_show_updated: `Show 'Last Updated'`,
     editor_direction: `Direction filter`,
     editor_direction_all: `All`,
@@ -1504,6 +1505,7 @@ const $8ae640dd6c4226ad$export$150b732325d14d04 = {
         editor_show_departed_offeset: "... men visa avg\xe5ngna f\xf6r antal minuter sedan",
         editor_show_time_always: "Visa alltid avg\xe5ngstid i HH:MM-form",
         editor_hide_line_number: "D\xf6lj linjenummer",
+        editor_use_sensor_color: "Anv\xe4nd sensorns f\xe4rg",
         editor_show_updated: `Visa 'Senast uppdaterad'`,
         editor_direction: `Riktning filter`,
         editor_direction_all: `Alla`,
@@ -1533,6 +1535,7 @@ const $8ae640dd6c4226ad$export$150b732325d14d04 = {
         editor_show_departed_offeset: "... mais montrer les d\xe9parts depuis le nombre de minutes",
         editor_show_time_always: "Toujours afficher l'heure de d\xe9part en HH:MM",
         editor_hide_line_number: "Masquer le num\xe9ro de ligne",
+        editor_use_sensor_color: "Utiliser la couleur du capteur",
         editor_show_updated: `Afficher 'Mis \xe0 jour'`,
         editor_direction: `Filtre de direction`,
         editor_direction_all: `Tous`,
@@ -1558,9 +1561,76 @@ var $39J5i = parcelRequire("39J5i");
 parcelRequire("j0ZcV");
 var $l56HR = parcelRequire("l56HR");
 var $eGUNk = parcelRequire("eGUNk");
+
+var $l56HR = parcelRequire("l56HR");
+/**
+ * @license
+ * Copyright 2017 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $107bb7d062dde330$export$9ba3b3f20a85bfa = {
+    ATTRIBUTE: 1,
+    CHILD: 2,
+    PROPERTY: 3,
+    BOOLEAN_ATTRIBUTE: 4,
+    EVENT: 5,
+    ELEMENT: 6
+}, $107bb7d062dde330$export$99b43ad1ed32e735 = (t)=>(...e)=>({
+            _$litDirective$: t,
+            values: e
+        });
+class $107bb7d062dde330$export$befdefbdce210f91 {
+    constructor(t){}
+    get _$AU() {
+        return this._$AM._$AU;
+    }
+    _$AT(t, e, i) {
+        this._$Ct = t, this._$AM = e, this._$Ci = i;
+    }
+    _$AS(t, e) {
+        return this.update(t, e);
+    }
+    update(t, e) {
+        return this.render(...e);
+    }
+}
+
+
+/**
+ * @license
+ * Copyright 2018 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */ const $19f464fcda7d2482$var$n = "important", $19f464fcda7d2482$var$i = " !" + $19f464fcda7d2482$var$n, $19f464fcda7d2482$export$1e5b4ce2fa884e6a = (0, $107bb7d062dde330$export$99b43ad1ed32e735)(class extends (0, $107bb7d062dde330$export$befdefbdce210f91) {
+    constructor(t){
+        if (super(t), t.type !== (0, $107bb7d062dde330$export$9ba3b3f20a85bfa).ATTRIBUTE || "style" !== t.name || t.strings?.length > 2) throw Error("The `styleMap` directive must be used in the `style` attribute and must be the only part in the attribute.");
+    }
+    render(t) {
+        return Object.keys(t).reduce((e, r)=>{
+            const s = t[r];
+            return null == s ? e : e + `${r = r.includes("-") ? r : r.replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g, "-$&").toLowerCase()}:${s};`;
+        }, "");
+    }
+    update(e, [r]) {
+        const { style: s } = e.element;
+        if (void 0 === this.ft) return this.ft = new Set(Object.keys(r)), this.render(r);
+        for (const t of this.ft)null == r[t] && (this.ft.delete(t), t.includes("-") ? s.removeProperty(t) : s[t] = null);
+        for(const t in r){
+            const e = r[t];
+            if (null != e) {
+                this.ft.add(t);
+                const r = "string" == typeof e && e.endsWith($19f464fcda7d2482$var$i);
+                t.includes("-") || r ? s.setProperty(t, r ? e.slice(0, -11) : e, r ? $19f464fcda7d2482$var$n : "") : s[t] = e;
+            }
+        }
+        return 0, $l56HR.noChange;
+    }
+});
+
+
+
+
 parcelRequire("1ZxoT");
-var $pklEb = parcelRequire("pklEb");
 var $dsTCw = parcelRequire("dsTCw");
+var $pklEb = parcelRequire("pklEb");
 var $829f1babd4ccc0b8$export$6d07abd9f0bba447;
 (function(TransportType) {
     TransportType["METRO"] = "METRO";
@@ -1595,56 +1665,94 @@ parcelRequire("j0ZcV");
 var $j8KxL = parcelRequire("j8KxL");
 const $57faf62096e30446$var$lineColorsStyles = (0, $j8KxL.css)`
     .line-icon {
-        border-radius: 3px;
-        padding: 3px 3px 0 3px;
-        color: #fff;
-        min-width: 22px;
-        height: 22px;
-        font-weight: 500;
-        display: inline-block;
-        text-align: center;
-        text-shadow: 1px 1px 2px var(--outline-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        border-width: var(--hasl-icon-border-width, 1px);
+        border-style: var(--hasl-icon-border-style, solid);
+        border-color: var(--hasl-icon-border-color, var(--hasl-line-color, var(--outline-color)));
+        border-radius: var(--hasl-icon-border-radius, var(--ha-border-radius-sm));
+        margin: var(--hasl-icon-margin, 0 8px 0 0);
+        padding: var(--hasl-icon-padding, 0 3px);
+        background-color: var(--hasl-icon-background-color, var(--hasl-line-color));
+        color: var(--hasl-icon-color, #fff);
+        min-width: var(--hasl-icon-min-width, 22px);
+        max-width: var(--hasl-icon-max-width);
+        height: var(--hasl-icon-height, 22px);
+        font-size: var(--hasl-icon-font-size, var(--ha-font-size-s));
+        font-weight: var(--hasl-icon-font-weight, var(--ha-font-weight-medium));
+        line-height: var(--hasl-icon-line-height, 1);
     }
 
-    .bus {
-        border: 1px solid var(--outline-color);
-        color: var(--primary-text-color);
+    /* Default mode colors */
+    .metro {
+        --hasl-line-color: var(--green-color);
     }
-
-    .red {
-        background-color: #d71d24;
-    }
-    .blue {
-        background-color: #0089ca;
-    }
-    .green {
-        background-color: #179d4d;
-    }
-
     .train {
-        background-color: #ec619f;
+        --hasl-line-color: var(--pink-color);
     }
-
     .tram {
-        background-color: #985141;
+        --hasl-line-color: var(--brown-color);
+    }
+    .bus {
+        --hasl-line-color: var(--light-blue-color);
+    }
+    .ship {
+        --hasl-line-color: var(--indigo-color);
+    }
+    .ferry {
+        --hasl-line-color: var(--blue-color);
+    }
+    .taxi {
+        --hasl-line-color: var(--yellow-color);
     }
 
-    .tram_7 {
-        background-color: #878a83;
+    /* Deprecated, preserved for backwards compatibility for SL/Resrobot */
+    .provider_sl {
+        &.metro {
+            --hasl-line-color: #179d4d;
+        }
+        &.train {
+            --hasl-line-color: #ec619f;
+        }
+        &.tram {
+            --hasl-line-color: #985141;
+        }
+        &.bus,
+        &.ship,
+        &.ferry,
+        &.taxi {
+            --hasl-line-color: unset;
+            --hasl-icon-color: var(--primary-text-color);
+        }
+        &.bus_blåbuss {
+            --hasl-line-color: #0089ca;
+            --hasl-icon-color: #fff;
+        }
+        &.tram_7 {
+            --hasl-line-color: #878a83;
+        }
+        &.tram_12 {
+            --hasl-line-color: #778da7;
+        }
+        &.tram_21 {
+            --hasl-line-color: #b76020;
+        }
+        &.tram_22 {
+            --hasl-line-color: #d77d00;
+        }
+        &.metro_10,
+        &.metro_11 {
+            --hasl-line-color: ##0089ca;
+        }
+        &.metro_13,
+        &.metro_14 {
+            --hasl-line-color: #d71d24;
+        }
     }
-
-    .tram_12 {
-        background-color: #778da7;
-    }
-
-    .tram_21 {
-        background-color: #b76020;
-    }
-
-    .tram_22 {
-        background-color: #d77d00;
-    }
-    `;
+`;
 const $57faf62096e30446$var$departureEntityStyles = (0, $j8KxL.css)`
     .card-header .name {
         white-space: nowrap;
@@ -1724,10 +1832,6 @@ const $57faf62096e30446$var$departureEntityStyles = (0, $j8KxL.css)`
         color: var(--warning-color);
         font-size: smaller;
         text-decoration: unset;
-    }
-
-    .mr1 {
-        margin-right: 8px;
     }
 
     .updated {
@@ -1881,35 +1985,15 @@ class $66d5822390d71e6e$export$7ded24e6705f9c64 extends (0, $eGUNk.LitElement) {
         if (!attrs) return undefined;
         return this.getDeparturesFor(attrs);
     }
-    lineIconClass(type, line, group) {
-        let cls = "";
-        switch(type){
-            case (0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).BUS:
-                cls = `bus bus_${line}`;
-                cls = group === "bl\xe5buss" ? `${cls} blue` : cls;
-                break;
-            case (0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).METRO:
-                cls = `metro metro_${line}`;
-                switch(line){
-                    case "10":
-                    case "11":
-                        cls = `${cls} blue`;
-                        break;
-                    case "13":
-                    case "14":
-                        cls = `${cls} red`;
-                        break;
-                    default:
-                        cls = `${cls} green`;
-                }
-                break;
-            case (0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).TRAM:
-                cls = `tram tram_${line}`;
-                break;
-            case (0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).TRAIN:
-                cls = `train train_${line}`;
-                break;
-        }
+    lineIconClass({ transport_mode: transport_mode, id: id = "", designation: designation = "", group_of_lines: group_of_lines = "", provider: provider = "sl" }) {
+        const lineId = provider === "sl" ? designation : `${id || designation}`;
+        const idCls = lineId.trim().replace(/ /g, "_");
+        const groupCls = group_of_lines.trim().replace(/ /g, "_");
+        const providerCls = provider.trim().replace(/ /g, "_");
+        let cls = transport_mode.toLowerCase();
+        if (idCls) cls += ` ${cls}_${idCls}`;
+        if (groupCls) cls += ` ${cls}_${groupCls}`;
+        if (providerCls) cls += ` provider_${providerCls}`;
         return cls;
     }
     _serviceCall(domain, service, data) {
@@ -1976,7 +2060,12 @@ class $66d5822390d71e6e$export$7ded24e6705f9c64 extends (0, $eGUNk.LitElement) {
                     [(0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).FERRY]: "mdi:ferry",
                     [(0, $829f1babd4ccc0b8$export$6d07abd9f0bba447).TAXI]: "mdi:taxi"
                 }[dep.line.transport_mode] || "mdi:train";
-                const lineIconClass = this.lineIconClass(dep.line.transport_mode, dep.line.designation, dep.line.group_of_lines);
+                const lineIconClass = this.lineIconClass(dep.line);
+                const lineStyle = (0, $19f464fcda7d2482$export$1e5b4ce2fa884e6a)({
+                    ...this.config?.use_sensor_color ? {
+                        "--hasl-line-color": dep.line.color
+                    } : {}
+                });
                 // if destinationRegex is set, use it to extract the part of the destination to show
                 const destination = (()=>{
                     if (!destinationRegex) return dep.destination;
@@ -1992,7 +2081,7 @@ class $66d5822390d71e6e$export$7ded24e6705f9c64 extends (0, $eGUNk.LitElement) {
                         ` : (0, $l56HR.nothing)}
                         ${this.config?.hide_line_number ? (0, $l56HR.nothing) : (0, $l56HR.html)`
                             <div class="col icon">
-                                <span class="line-icon mr1 ${lineIconClass}">${dep.line.designation}</span>
+                                <span class="line-icon ${lineIconClass}" style=${lineStyle}>${dep.line.designation}</span>
                                 ${hasDeviations ? (0, $l56HR.html)`<ha-icon class="warning" icon="mdi:alert"/>` : (0, $l56HR.nothing)}
                             </div>
                         `}

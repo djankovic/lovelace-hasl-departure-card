@@ -146,6 +146,10 @@ class $91eb62869907e39c$export$8d2c87e174389bfd extends (0, $j0ZcV.LitElement) {
                             type: "boolean"
                         },
                         {
+                            name: "use_sensor_color",
+                            type: "boolean"
+                        },
+                        {
                             name: "show_time_always",
                             type: "boolean"
                         },
