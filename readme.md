@@ -54,6 +54,7 @@ Card fully supports configuration through the UI
 | language             | string           | optional  | The texts will be rendered in this language. Can be one of `sv-SE`, `en-EN`, `fr-FR`.                       |
 | click_action         | string or object | optional  | Action when tapping the card. See section `click_action` below.                                             |
 | hide_line_number     | bool             | optional  | Render the line number.                                                                                     |
+| use_sensor_color     | bool             | optional  | If set, prefers the line color exposed by the 'Departure' sensors over card defaults                        |
 
 Setting `entities` to more than one entity will render departures from all of the sensors as one list sorted by `expected` time but will disable `show_entity_name` and `show_updated` options.
 

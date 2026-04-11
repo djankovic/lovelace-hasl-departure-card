@@ -258,7 +258,7 @@ export class HASLDepartureCard extends LitElement implements LovelaceCard {
                     const lineIconClass = this.lineIconClass(dep.line)
 
                     const lineStyle = styleMap({
-                        '--hasl-line-color': dep.line.color,
+                        ...(this.config?.use_sensor_color ? { '--hasl-line-color': dep.line.color, } : {}),
                     })
 
                     // if destinationRegex is set, use it to extract the part of the destination to show
