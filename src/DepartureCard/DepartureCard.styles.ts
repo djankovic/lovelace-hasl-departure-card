@@ -2,6 +2,8 @@ import {css} from 'lit'
 
 const lineColorsStyles = css`
     .line-icon {
+        overflow: hidden;
+        white-space: nowrap;
         border-radius: 3px;
         padding: 3px 3px 0 3px;
         color: #fff;
