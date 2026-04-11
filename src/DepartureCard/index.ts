@@ -1,10 +1,11 @@
 import { LitElement, html, nothing, css } from 'lit'
+import { styleMap } from 'lit/directives/style-map'
 import { property, state } from 'lit/decorators';
 
 import type { HomeAssistant, LovelaceCard } from "custom-card-helpers";
 import type { HassEntity } from "home-assistant-js-websocket";
 
-import type { DepartureAttributes } from "../models"
+import type { DepartureAttributes, DepartureLine } from "../models"
 import { TransportType } from '../models'
 import { translateTo, getLanguage } from '../translations'
 import { DepartureCardConfig, DEFAULT_CONFIG, ClickAction, EntityInfoAction, ServiceCallAction } from './DepartureCard.config'
@@ -254,7 +255,11 @@ export class HASLDepartureCard extends LitElement implements LovelaceCard {
                         [TransportType.TAXI]: 'mdi:taxi',
                     }[dep.line.transport_mode] || 'mdi:train'
 
-                    const lineIconClass = this.lineIconClass(dep.line.transport_mode, dep.line.designation, dep.line.group_of_lines)
+                    const lineIconClass = this.lineIconClass(dep.line)
+
+                    const lineStyle = styleMap({
+                        '--hasl-line-color': dep.line.color,
+                    })
 
                     // if destinationRegex is set, use it to extract the part of the destination to show
                     const destination = (() => {
@@ -272,7 +277,7 @@ export class HASLDepartureCard extends LitElement implements LovelaceCard {
                         ` : nothing}
                         ${this.config?.hide_line_number ? nothing : html`
                             <div class="col icon">
-                                <span class="line-icon mr1 ${lineIconClass}">${dep.line.designation}</span>
+                                <span class="line-icon mr1 ${lineIconClass}" style=${lineStyle}>${dep.line.designation}</span>
                                 ${hasDeviations ? html`<ha-icon class="warning" icon="mdi:alert"/>` : nothing}
                             </div>
                         `}
@@ -289,35 +294,25 @@ export class HASLDepartureCard extends LitElement implements LovelaceCard {
         `
     }
 
-    private lineIconClass(type: TransportType, line: string, group: string) {
-        let cls = ''
-        switch (type) {
-            case TransportType.BUS:
-                cls = `bus bus_${line}`
-                cls = group === "blåbuss" ? `${cls} blue` : cls
-                break
-            case TransportType.METRO:
-                cls = `metro metro_${line}`
-                switch (line) {
-                    case "10":
-                    case "11":
-                        cls = `${cls} blue`
-                        break;
-                    case "13":
-                    case "14":
-                        cls = `${cls} red`
-                        break;
-                    default:
-                        cls = `${cls} green`
-                }
-                break
-            case TransportType.TRAM:
-                cls = `tram tram_${line}`
-                break
-            case TransportType.TRAIN:
-                cls = `train train_${line}`
-                break
+    private lineIconClass({ transport_mode, id = '', designation = '', group_of_lines = '', provider = 'sl' }: DepartureLine) {
+        const lineId = provider === 'sl' ? designation : `${id || designation}`
+
+        const idCls = lineId.trim().replace(/ /g, '_')
+        const groupCls = group_of_lines.trim().replace(/ /g, '_')
+        const providerCls = provider.trim().replace(/ /g, '_');
+
+        let cls = transport_mode.toLowerCase()
+
+        if (idCls) {
+            cls += ` ${cls}_${idCls}`
         }
+        if (groupCls) {
+            cls += ` ${cls}_${groupCls}`
+        }
+        if (providerCls) {
+          cls += ` provider_${providerCls}`
+        }
+
         return cls
     }
 

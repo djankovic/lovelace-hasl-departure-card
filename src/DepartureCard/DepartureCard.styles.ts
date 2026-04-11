@@ -7,51 +7,79 @@ const lineColorsStyles = css`
         border-radius: 3px;
         padding: 3px 3px 0 3px;
         color: #fff;
+        background-color: var(--hasl-line-color);
         min-width: 22px;
         height: 22px;
         font-weight: 500;
         display: inline-block;
         text-align: center;
-        text-shadow: 1px 1px 2px var(--outline-color);
     }
 
-    .bus {
-        border: 1px solid var(--outline-color);
-        color: var(--primary-text-color);
+    /* Default mode colors */
+    .metro {
+        --hasl-line-color: var(--green-color);
     }
-
-    .red {
-        background-color: #d71d24;
-    }
-    .blue {
-        background-color: #0089ca;
-    }
-    .green {
-        background-color: #179d4d;
-    }
-
     .train {
-        background-color: #ec619f;
+        --hasl-line-color: var(--pink-color);
     }
-
     .tram {
-        background-color: #985141;
+        --hasl-line-color: var(--brown-color);
+    }
+    .bus {
+        --hasl-line-color: var(--light-blue-color);
+    }
+    .ship {
+        --hasl-line-color: var(--indigo-color);
+    }
+    .ferry {
+        --hasl-line-color: var(--blue-color);
+    }
+    .taxi {
+        --hasl-line-color: var(--yellow-color);
     }
 
-    .tram_7 {
-        background-color: #878a83;
-    }
-
-    .tram_12 {
-        background-color: #778da7;
-    }
-
-    .tram_21 {
-        background-color: #b76020;
-    }
-
-    .tram_22 {
-        background-color: #d77d00;
+    /* Deprecated, preserved for backwards compatibility for SL/Resrobot */
+    .provider_sl {
+        &.metro {
+            --hasl-line-color: #179d4d;
+        }
+        &.train {
+            --hasl-line-color: #ec619f;
+        }
+        &.tram {
+            --hasl-line-color: #985141;
+        }
+        &.bus,
+        &.ship,
+        &.ferry,
+        &.taxi {
+            --hasl-line-color: unset;
+            --hasl-icon-color: var(--primary-text-color);
+        }
+        &.bus_blåbuss {
+            --hasl-line-color: #0089ca;
+            --hasl-icon-color: #fff;
+        }
+        &.tram_7 {
+            --hasl-line-color: #878a83;
+        }
+        &.tram_12 {
+            --hasl-line-color: #778da7;
+        }
+        &.tram_21 {
+            --hasl-line-color: #b76020;
+        }
+        &.tram_22 {
+            --hasl-line-color: #d77d00;
+        }
+        &.metro_10,
+        &.metro_11 {
+            --hasl-line-color: ##0089ca;
+        }
+        &.metro_13,
+        &.metro_14 {
+            --hasl-line-color: #d71d24;
+        }
     }
     `
 

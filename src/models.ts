@@ -14,6 +14,15 @@ export type DepartureDeviation = {
     message: string
 }
 
+export type DepartureLine = {
+  id: number | string
+  designation: string
+  transport_mode: TransportType
+  group_of_lines: string
+  color?: string
+  provider?: string
+}
+
 export type Departure = {
     destination: string
     deviations?: DepartureDeviation[]
@@ -25,12 +34,7 @@ export type Departure = {
         name: string
         designation: string
     }
-    line: {
-        id: number
-        designation: string
-        transport_mode: TransportType
-        group_of_lines: string
-    }
+    line: DepartureLine
     scheduled: string
     expected: string
 }
