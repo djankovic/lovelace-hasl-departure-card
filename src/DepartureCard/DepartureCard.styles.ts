@@ -2,17 +2,25 @@ import {css} from 'lit'
 
 const lineColorsStyles = css`
     .line-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         overflow: hidden;
         white-space: nowrap;
-        border-radius: 3px;
-        padding: 3px 3px 0 3px;
-        color: #fff;
-        background-color: var(--hasl-line-color);
-        min-width: 22px;
-        height: 22px;
-        font-weight: 500;
-        display: inline-block;
-        text-align: center;
+        border-width: var(--hasl-icon-border-width, 1px);
+        border-style: var(--hasl-icon-border-style, solid);
+        border-color: var(--hasl-icon-border-color, var(--hasl-line-color, var(--outline-color)));
+        border-radius: var(--hasl-icon-border-radius, var(--ha-border-radius-sm));
+        margin: var(--hasl-icon-margin, 0 8px 0 0);
+        padding: var(--hasl-icon-padding, 0 3px);
+        background-color: var(--hasl-icon-background-color, var(--hasl-line-color));
+        color: var(--hasl-icon-color, #fff);
+        min-width: var(--hasl-icon-min-width, 22px);
+        max-width: var(--hasl-icon-max-width);
+        height: var(--hasl-icon-height, 22px);
+        font-size: var(--hasl-icon-font-size, var(--ha-font-size-s));
+        font-weight: var(--hasl-icon-font-weight, var(--ha-font-weight-medium));
+        line-height: var(--hasl-icon-line-height, 1);
     }
 
     /* Default mode colors */
@@ -81,7 +89,7 @@ const lineColorsStyles = css`
             --hasl-line-color: #d71d24;
         }
     }
-    `
+`
 
 const departureEntityStyles = css`
     .card-header .name {
@@ -162,10 +170,6 @@ const departureEntityStyles = css`
         color: var(--warning-color);
         font-size: smaller;
         text-decoration: unset;
-    }
-
-    .mr1 {
-        margin-right: 8px;
     }
 
     .updated {

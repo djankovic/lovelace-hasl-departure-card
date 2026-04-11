@@ -277,7 +277,7 @@ export class HASLDepartureCard extends LitElement implements LovelaceCard {
                         ` : nothing}
                         ${this.config?.hide_line_number ? nothing : html`
                             <div class="col icon">
-                                <span class="line-icon mr1 ${lineIconClass}" style=${lineStyle}>${dep.line.designation}</span>
+                                <span class="line-icon ${lineIconClass}" style=${lineStyle}>${dep.line.designation}</span>
                                 ${hasDeviations ? html`<ha-icon class="warning" icon="mdi:alert"/>` : nothing}
                             </div>
                         `}
